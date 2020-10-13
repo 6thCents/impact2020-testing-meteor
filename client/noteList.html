@@ -1,0 +1,33 @@
+<template name="noteList">
+
+    <div class="row">
+        <div class="col-xs-12 col-sm-8 offset-sm-2 col-md-6 offset-md-3">
+            <h3>Note Manager </h3>
+            {{#if showAdd}}
+                {{> addNote done=allDone}}
+            {{else}}
+                <div style="margin-bottom: 21px;">
+                    <button id='cmdAdd' type='button' class='btn btn-primary'>Add Note</button>
+                </div>
+                <table class="table table-highlight">
+                    <thead>
+                        <tr>
+                            <th>Note Body</th>
+                            <th>Created</th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+                        {{#each note}}
+                            <tr>
+                                <td>{{noteBody}}</td>
+                                <td>{{formattedDate createdAt}}</td>
+                            </tr>
+                        {{/each}}
+                    </tbody>
+                </table>
+            {{/if}}
+        </div>
+    </div>
+
+</template>

@@ -1,0 +1,18 @@
+<template name='addNote'>
+
+    <div class="row">
+        <div class="col-12">
+            <form id='note-add-form'>
+                <div class="form-group" style='width: 100%'>
+                    <textarea rows="3" class="form-control" id="noteBody" placeholder="Write your new note here!" required maxlength="256"></textarea>
+                </div>
+                <div style="margin-bottom: 12px;">
+                    <button type='submit' class='btn btn-primary btn-sm'>Save</button>
+                    <button type='button' id='cmdCancel' class='btn btn-default btn-sm'>Cancel</button>
+                </div>
+                <p style='color: red'>{{errorMessage}}</p>
+            </form>
+        </div>
+    </div>
+
+</template>
