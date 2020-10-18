@@ -19,12 +19,12 @@ Template.addNote.events({
                 instance.errorMsg.set('There was a problem adding your note - try again!')
             }
             else {
-                self.done() // callback passed in
+                self.done() // see callback passed in
             }
         })
     },
     'click button#cmdCancel': function (event, instance) {
         event.preventDefault()
-        this.done()
+        this.done() // see callback passed in
     }
 })
