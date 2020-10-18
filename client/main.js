@@ -1,5 +1,6 @@
+import 'bootstrap/dist/css/bootstrap.min.css'
+import 'bootstrap'
 import './main.html';
-
 import '../lib/notes'
 import '../lib/notesSchema'
 import '../lib/constants'

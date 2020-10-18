@@ -14,17 +14,27 @@ Meteor.methods({
             throw new Meteor.Error('Note not found!')
         }
 
-        Notes.update(
-            {
-                _id: id
-            },
-            {
-                $set: {
-                    noteBody: noteValue,
-                    modifiedAt: new Date()
+        if (noteValue === note.noteBody) {
+            return true
+        }
+
+        try {
+            Notes.update(
+                {
+                    _id: id
+                },
+                {
+                    $set: {
+                        noteBody: noteValue,
+                        modifiedAt: new Date()
+                    }
                 }
-            }
-        )
+            )
+        }
+        catch (error) {
+            console.log(error)
+            throw new Meteor.Error('Update failed try again later!')
+        }
 
         return true
     }
