@@ -6,7 +6,12 @@ Notes._ensureIndex({ noteBody: 1 });
 
 Meteor.publish('allnotes', function (search) {
 
-    check(search, String)
+    // try {
+    //     check(search, String)
+    // }
+    // catch {
+    //     return this.ready()
+    // }
 
     return Notes.find({ noteBody: { $regex: search, $options: 'i' } })
 }); 

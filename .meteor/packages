@@ -21,3 +21,5 @@ shell-server@0.5.0            # Server-side component of the `meteor shell` comm
 
 aldeed:collection2
 underscore
+meteortesting:mocha
+johanbrook:publication-collector
