@@ -1,6 +1,10 @@
 import { Template } from 'meteor/templating'
 import { ReactiveVar } from 'meteor/reactive-var'
 import Notes from '../lib/notes'
+import { Session } from 'meteor/session'
+
+import { Constants } from '../lib/constants'
+
 
 Template.noteList.onCreated(function () {
     const self = this
@@ -23,11 +27,6 @@ Template.noteList.helpers({
         return Template.instance().addMode.get()
     },
 
-    formattedDate(val) {
-        const dt = new Date(val)
-        return `${dt.toLocaleDateString()} ${dt.getHours()}:${dt.getMinutes()}`
-    },
-
     allDone() {
         const instance = Template.instance()
         return function () {
@@ -37,7 +36,7 @@ Template.noteList.helpers({
 })
 
 Template.noteList.events({
-    'click button#cmdAdd': function (event, instance) {
+    'click a#cmdAdd': function (event, instance) {
         instance.addMode.set(true)
     }
 })
