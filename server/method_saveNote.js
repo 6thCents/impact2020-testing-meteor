@@ -15,7 +15,7 @@ Meteor.methods({
         }
 
         if (noteValue === note.noteBody) {
-            return true
+            return true // no point in doing anything nothing changed
         }
 
         try {

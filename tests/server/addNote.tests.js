@@ -21,6 +21,8 @@ describe('Method - Add Note', function () {
         sandbox.stub(Logger, 'log')
         sandbox.stub(Notes, 'insert')
 
+        //sandbox.spy(Notes, 'insert')
+
         context = {}
 
         subject = Meteor.server.method_handlers.addNote
