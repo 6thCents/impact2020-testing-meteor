@@ -1,4 +1,5 @@
 /* global document */
+// See https://guide.meteor.com/testing.html#simple-blaze-unit-test
 import { Meteor } from 'meteor/meteor';
 import { _ } from 'meteor/underscore';
 import { Template } from 'meteor/templating';

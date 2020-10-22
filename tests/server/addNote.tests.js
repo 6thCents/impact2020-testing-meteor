@@ -32,12 +32,12 @@ describe('Method - Add Note', function () {
         sandbox.restore()
     })
 
-    // it.only('should validate user is logged in', async () => {
+    // it('should validate user is logged in', async () => {
     //     let msg = ''
-    //     context = { userId: Random.id() }
+    //     // context = { userId: Random.id() }
 
     //     try {
-    //         await subject.apply(context, [{ not: 'a string' }])
+    //         await subject.apply(context, ['some note'])
     //     }
     //     catch (err) {
     //         msg = err.error
