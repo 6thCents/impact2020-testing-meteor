@@ -23,7 +23,7 @@ describe('Logger', function () {
         sandbox.restore()
     })
 
-    it('should call console log', async () => {
+    it('should call console log', () => {
         Logger.log('this is a test')
 
         expect(console.log).to.have.been.called
@@ -31,3 +31,6 @@ describe('Logger', function () {
     })
 
 })
+
+
+
