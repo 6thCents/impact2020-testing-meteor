@@ -1,6 +1,4 @@
-// @ts-nocheck
 /* eslint-env mocha */
-/* eslint-disable func-names, prefer-arrow-callback */
 import { Meteor } from 'meteor/meteor';
 import { Template } from 'meteor/templating';
 import { Tracker } from 'meteor/tracker'
@@ -20,6 +18,8 @@ chai.use(sinonChai)
 if (Meteor.isClient) {
 
     import withRenderedTemplate from './client-test-helpers';
+    import '../../client/noteList.html'
+    import '../../client/noteItem.html'
 
     describe('Note List Tests', function () {
 

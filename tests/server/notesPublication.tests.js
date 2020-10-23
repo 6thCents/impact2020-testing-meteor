@@ -76,7 +76,7 @@ if (Meteor.isServer) {
             }
 
             try {
-                collections = await collector.collect('allnotes', '')
+                collections = await collector.collect('allnotes', ' ')
             }
             catch (err) {
                 console.log(msg)
@@ -92,7 +92,7 @@ if (Meteor.isServer) {
 
             expect(Notes.find).to.have.been.called
             let args = Notes.find.args[0]
-            expect(args[0].noteBody.$regex).to.equal('')
+            expect(args[0].noteBody.$regex).to.equal(' ')
             expect(args[0].noteBody.$options).to.equal('i')
         })
 
