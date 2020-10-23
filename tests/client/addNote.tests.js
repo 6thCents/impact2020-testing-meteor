@@ -17,7 +17,7 @@ if (Meteor.isClient) {
     import withRenderedTemplate from './client-test-helpers';
     import '../../client/addNote.html'
 
-    describe.only('Add Note Blaze Component Tests', function () {
+    describe('Add Note Blaze Component Tests', function () {
 
         let sandbox
         let doneStub
