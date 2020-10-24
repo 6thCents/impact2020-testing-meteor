@@ -45,7 +45,7 @@ if (Meteor.isClient) {
 
         it('Should display the list correctly', function () {
 
-            const n = TestData.fakeNotes({ count: 3 })
+            const n = TestData.fakeNotes({ count: 5 })
 
             Notes.find.returns(n)
 
@@ -56,8 +56,8 @@ if (Meteor.isClient) {
                 expect($(el).find('a#cmdAdd'), 'add button').to.have.length(1)
                 expect($(el).find('input#search'), 'search input').to.have.length(1)
 
-                expect($(el).find('form#note-add-form'), 'search input').to.have.length(0)
-                expect($(el).find('div.note-item'), 'note items').to.have.length(3)
+                expect($(el).find('form#note-add-form'), 'search add form').to.have.length(0)
+                expect($(el).find('div.note-item'), 'note items').to.have.length(5)
 
             });
         })
@@ -88,6 +88,7 @@ if (Meteor.isClient) {
                 expect($(el).find('textarea#noteBody'), 'note input').to.have.length(1)
                 expect($(el).find('button#cmdSave'), 'save button').to.have.length(1)
                 expect($(el).find('button#cmdCancel'), 'cancel button').to.have.length(1)
+                expect($(el).find('div.error-message').text(), 'error message').to.equal('')
 
             });
         })

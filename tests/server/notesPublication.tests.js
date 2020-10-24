@@ -7,6 +7,7 @@ import sinonChai from 'sinon-chai'
 import { _ } from 'meteor/underscore'
 import { PublicationCollector } from 'meteor/johanbrook:publication-collector';
 import Notes from '../../lib/notes'
+import TestData from '../testData'
 
 chai.use(sinonChai)
 
@@ -33,34 +34,34 @@ if (Meteor.isServer) {
             // Notes.remove({})
         })
 
-        // it('should verify input', async () => {
+        it('should verify input', async () => {
 
-        //     // const collector = new PublicationCollector({ userId });
-        //     const collector = new PublicationCollector();
+            // const collector = new PublicationCollector({ userId });
+            const collector = new PublicationCollector();
 
-        //     let collections;
+            let collections;
 
-        //     let msg = ''
+            let msg = ''
 
-        //     for (let i = 0; i < 3; i += 1) {
-        //         const id = Notes.insert({ noteBody: `Note ${i}`, createdAt: new Date() })
-        //         noteIds.push(id)
-        //     }
+            for (let i = 0; i < 3; i += 1) {
+                const id = Notes.insert(TestData.fakeNote({ noteBody: `Note ${i}` }))
+                noteIds.push(id)
+            }
 
-        //     try {
-        //         collections = await collector.collect('allnotes', null)
-        //     }
-        //     catch (err) {
-        //         console.log(msg)
-        //         msg = err.message;
-        //     }
+            try {
+                collections = await collector.collect('allnotes', null)
+            }
+            catch (err) {
+                console.log(msg)
+                msg = err.message;
+            }
 
-        //     expect(msg).to.equal('');
+            expect(msg).to.equal('');
 
-        //     expect(collections.notes).to.be.undefined
+            expect(collections.notes).to.be.undefined
 
-        //     expect(Notes.find).to.not.have.been.called
-        // })
+            expect(Notes.find).to.not.have.been.called
+        })
 
         it('should return all notes', async () => {
 
@@ -71,7 +72,7 @@ if (Meteor.isServer) {
             let msg = ''
 
             for (let i = 0; i < 3; i += 1) {
-                const id = Notes.insert({ noteBody: `Note ${i}`, createdAt: new Date() })
+                const id = Notes.insert(TestData.fakeNote({ noteBody: `Note ${i}` }))
                 noteIds.push(id)
             }
 
@@ -105,7 +106,7 @@ if (Meteor.isServer) {
             let msg = ''
 
             for (let i = 0; i < 3; i += 1) {
-                const id = Notes.insert({ noteBody: `Note ${i}`, createdAt: new Date() })
+                const id = Notes.insert(TestData.fakeNote({ noteBody: `Note ${i}` }))
                 noteIds.push(id)
             }
 

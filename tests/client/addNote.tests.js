@@ -112,5 +112,33 @@ if (Meteor.isClient) {
 
             });
         })
+
+        it('Should handle cancel correctly', function () {
+
+            Meteor.call.yields({ any: 'thing' }, {})
+
+            withRenderedTemplate('addNote', { done: doneStub }, function (el) {
+
+                expect($(el).find('form#note-add-form'), 'form').to.have.length(1)
+                expect($(el).find('textarea#noteBody'), 'note input').to.have.length(1)
+
+                expect($(el).find('button#cmdSave'), 'search input').to.have.length(1)
+                expect($(el).find('button#cmdCancel'), 'search input').to.have.length(1)
+
+                expect($(el).find('div.error-message'), 'error').to.have.length(1)
+                expect($(el).find('div.error-message').text(), 'error message').to.equal('')
+
+                $(el).find('textarea#noteBody').val('this is a fake note')
+
+                $(el).find('button#cmdCancel').click()
+
+                Tracker.flush()
+
+                expect(Meteor.call).to.not.have.been.called
+
+                expect(doneStub).to.have.been.called
+
+            });
+        })
     })
 }

@@ -1,12 +1,11 @@
 /* eslint-env mocha */
 import { Meteor } from 'meteor/meteor'
-import { Random } from 'meteor/random'
 import { _ } from 'meteor/underscore'
 import sinon from 'sinon';
 import chai, { expect } from 'chai';
 import sinonChai from 'sinon-chai'
 import Notes from '../../lib/notes'
-import Logger from '../../lib/logger'
+import logger from '../../lib/logger'
 
 chai.use(sinonChai)
 
@@ -18,7 +17,7 @@ describe('Method - Add Note', function () {
 
     beforeEach(function () {
         sandbox = sinon.createSandbox()
-        sandbox.stub(Logger, 'log')
+        sandbox.stub(logger, 'log')
         sandbox.stub(Notes, 'insert')
 
         //sandbox.spy(Notes, 'insert')
@@ -97,8 +96,8 @@ describe('Method - Add Note', function () {
         expect(args[0].noteBody).to.equal('fake note')
         expect(_.isDate(args[0].createdAt)).to.be.true
 
-        expect(Logger.log).to.have.been.called
-        expect(Logger.log).to.have.been.calledWith(fakeError)
+        expect(logger.log).to.have.been.called
+        expect(logger.log).to.have.been.calledWith(fakeError)
 
         expect(msg).to.equal('An error occurred creating your note!')
         expect(result).to.be.null
@@ -106,7 +105,9 @@ describe('Method - Add Note', function () {
 
     it('should handle insert correctly', async () => {
         let msg = ''
+
         Notes.insert.returns('fake-id')
+
         let result
 
         try {
@@ -116,15 +117,18 @@ describe('Method - Add Note', function () {
             msg = err.error
         }
 
+        expect(msg).to.equal('')
+
         expect(Notes.insert).to.have.been.called
         const args = Notes.insert.args[0]
 
+        // const expected = {}
+
         expect(args[0].noteBody).to.equal('fake note')
+        // expect(args[0].noteBody).to.deep.equal(expected)
         expect(_.isDate(args[0].createdAt)).to.be.true
 
-        expect(Logger.log).to.not.have.been.called
-
-        expect(msg).to.equal('')
+        expect(logger.log).to.not.have.been.called
 
         expect(result).to.equal('fake-id')
     })

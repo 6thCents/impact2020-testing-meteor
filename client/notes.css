@@ -3,7 +3,7 @@ body {
   font-family: sans-serif;
 }
 
-div#mocha {
+/* div#mocha {
     background: white;
     border-right: 1px dashed #555;
     height: 100%;
@@ -15,9 +15,8 @@ div#mocha {
     resize: horizontal;
     top: 0;
     width: 50%;
-    /* width: 20px; */
     z-index: 1000;
-}
+} */
 
 
 

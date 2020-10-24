@@ -26,8 +26,8 @@ describe('Logger', function () {
     it('should call console log', () => {
         Logger.log('this is a test')
 
-        expect(console.log).to.have.been.called
-        expect(console.log).to.have.been.calledWith('this is a test')
+        expect(console.log, 'console log ran').to.have.been.called
+        expect(console.log, 'console log printed correctly').to.have.been.calledWith('this is a test')
     })
 
 })
